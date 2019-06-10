@@ -1,0 +1,51 @@
+{
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "all",
+    "editor.fontSize": 11.5,
+    "editor.fontFamily": "Monaco, Menlo, 'Courier New', monospace",
+    //rubocopの実行パス
+    "ruby.rubocop.executePath": "/Users/yuto_tachibana/.rbenv/shims/rubocop/",
+    // 上のファイル名出ることをホームディレクトリからの絶対パスも表示する
+    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+    // 新しいファイルを開くとき、既存のタブが上書きされるのを回避
+    "workbench.editor.enablePreview": false,
+    "editor.roundedSelection": true, // 選択範囲の角を丸める
+    "editor.quickSuggestions": {
+        "comments": false, // コメント内では無効
+        "strings": true, // 文字列内では有効
+        "other": true //  その他の場所で有効
+    }, // 補完候補の自動表示
+    "editor.formatOnType": true, // コード整形
+    "editor.formatOnPaste": true, // コード整形
+    "editor.renderLineHighlight": "all", // 選択中の行を強調する
+    "editor.minimap.enabled": true, // ミニマップの表示
+    "editor.minimap.maxColumn": 40, // ミニマップの幅
+    "editor.scrollBeyondLastLine": true, // 最終行よりも下へのスクロールを許可
+    "editor.renderControlCharacters": true, // 制御文字の表示
+    "editor.renderIndentGuides": true, // インデントのガイドラインを表示
+    "editor.minimap.renderCharacters": false, // ミニマップを簡略化
+    "editor.minimap.showSlider": "always", // ミニマップのハイライトを常に表示
+    "editor.minimap.side": "right", // ミニマップを右に表示
+    "editor.autoIndent": false, // オートインデント
+    "editor.cursorStyle": "line", // カーソルの形状
+    "editor.cursorBlinking": "smooth", // カーソルの表示形式
+    "editor.cursorWidth": 5, // カーソル幅
+    "editor.links": true, // リンクをクリック可能に
+    "editor.matchBrackets": true, // 対応する括弧の強調表示をオンに
+    "editor.mouseWheelScrollSensitivity": 0.7, // マウスホイール回転の移動係数
+    "editor.mouseWheelZoom": false, // Ctrl+マウスホイールによるズームを無効化
+    "files.insertFinalNewline": true, // ファイルの終端に空の行を追加
+    "files.autoGuessEncoding": true, // 文字コードを自動判別
+    // 拡張機能関連
+    "extensions.autoUpdate": true, // 自動更新
+    "extensions.ignoreRecommendations": false, // 推奨事項の通知をOFF
+    // クラッシュレポートを送信する
+    "telemetry.enableCrashReporter": true,
+    "telemetry.enableTelemetry": true,
+    // ステータスバーの色
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#111111",
+        "statusBar.noFolderBackground": "#111111",
+        "statusBar.debuggingBackground": "#111111",
+    },
+}
