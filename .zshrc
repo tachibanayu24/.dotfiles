@@ -1,8 +1,5 @@
 #
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+# Executes commands at the start of an interactive sessions
 #
 
 # Source Prezto.
@@ -12,8 +9,8 @@ fi
 
 # Customize to your needs...
 
+source ~/.bash_profile
 
-# ここはプロンプトの設定なので今回の設定とは関係ありません
 if [ $UID -eq 0 ];then
 # ルートユーザーの場合
 PROMPT="%F{red}%n:%f%F{green}%d%f [%m] %%
@@ -24,40 +21,46 @@ PROMPT="%F{cyan}%n:%f%F{green}%d%f [%m] %%
 "
 fi
 
+# エイリアス
+alias tree="tree -I node_modules -L 3"
+alias code="code ."
+alias ..='cd ..'
+alias mv='mv -i'
+alias cp='cp -i'
+alias c="clear"
+alias gs='git status'
+alias gc="git checkout"
 
-# ブランチ名を色付きで表示させるメソッド
+
+# gitのstatusを色付きで表示する
 function rprompt-git-current-branch {
   local branch_name st branch_status
 
-  if [ ! -e  ".git" ]; then
-    # gitで管理されていないディレクトリは何も返さない
-    return
-  fi
   branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
   st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+  if [[ -n `echo "$st" | grep "^not a git"` ]]; then
+    # gitなし
+    branch_status="no git"
+  elif [[ -n `echo "$st" | grep "^nothing to"` ]]; then
     # 全てcommitされてクリーンな状態
-    branch_status="%F{green}"
+    branch_status="%F{green}clean"
   elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
     # gitに管理されていないファイルがある状態
-    branch_status="%F{red}?"
+    branch_status="%F{red}untrack"
   elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
     # git addされていないファイルがある状態
-    branch_status="%F{red}+"
+    branch_status="%F{red}not stg"
   elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
     # git commitされていないファイルがある状態
-    branch_status="%F{yellow}!"
+    branch_status="%F{yellow}to commit"
   elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
     # コンフリクトが起こった状態
-    echo "%F{red}!(no branch)"
+    echo "%F{red}conflict"
     return
   else
-    # 上記以外の状態の場合は青色で表示させる
-    branch_status="%F{blue}"
+    branch_status="%F{blue}status?"
   fi
-  # ブランチ名を色付きで表示する
-  # echo "${branch_status}[$branch_namei]"
-  echo "🐥"
+  echo "🐥 ${branch_status}"
 }
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
