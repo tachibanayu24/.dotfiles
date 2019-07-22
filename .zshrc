@@ -1,36 +1,47 @@
-#
-# Executes commands at the start of an interactive sessions
-#
+# Alias
+alias vim="nvim"
+alias tree="tree -I node_modules -L 5"
+alias code="code ."
+alias ..='cd ..'
+alias ~="cd ~"
+alias mv='mv -i'
+alias cp='cp -i'
+alias c="clear"
+alias gs='git status'
+alias gc="git checkout"
+alias gb="git branch"
+alias gl="git log"
+alias dp="docker ps"
+alias di="docker images"
+alias dcom="docker-compose" # dcにするとcdとうち間違えたときめんどくさい
+
+# PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH=$PATH:./node_modules/.bin
+
+# Initialize Enviromnent
+eval "$(rbenv init -)"
+eval "$(pyenv init -)"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
 
-source ~/.bash_profile
-
-if [ $UID -eq 0 ];then
-# ルートユーザーの場合
-PROMPT="%F{red}%n:%f%F{green}%d%f [%m] %%
+# プロンプト
+PROMPT="%F{cyan}%n:%f%F{green}%d%f $
 "
-else
-# ルートユーザー以外の場合
-PROMPT="%F{cyan}%n:%f%F{green}%d%f [%m] %%
-"
-fi
 
-# エイリアス
-alias tree="tree -I node_modules -L 3"
-alias code="code ."
-alias ..='cd ..'
-alias mv='mv -i'
-alias cp='cp -i'
-alias c="clear"
-alias gs='git status'
-alias gc="git checkout"
-
+# git push origin master回避
+function disable_git_push_origin_master() {
+  if [[ $2 = "git push origin master" ]]; then
+      echo "Please stop push to master😨"
+      kill -INT 0
+  fi
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec disable_git_push_origin_master
 
 # gitのstatusを色付きで表示する
 function rprompt-git-current-branch {
