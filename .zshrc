@@ -17,6 +17,7 @@ alias gl="git log"
 alias dp="docker ps"
 alias di="docker images"
 alias dc="docker-compose"
+alias to_base="cd /Users/yuto_tachibana/Projects/pring/pring-ts-base"
 
 # ------------------------------
 # PATHs
@@ -24,6 +25,7 @@ alias dc="docker-compose"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:./node_modules/.bin
+export PATH="$HOME/bin:$PATH"
 
 # ------------------------------
 # Initialize Enviroments
@@ -60,6 +62,12 @@ function disable_dangerous_git_commands() {
 }
 
 # ------------------------------
+# display time
+# ------------------------------
+
+RPROMPT='%F{magenta}%* %F{white}/ '
+
+# ------------------------------
 # display status of git
 # ------------------------------
 
@@ -87,11 +95,13 @@ function rprompt-git-current-branch {
   echo "${branch_status}"
 }
 
-RPROMPT='`rprompt-git-current-branch`'
+RPROMPT+='`rprompt-git-current-branch`'
+
 
 # ------------------------------
 # Defining prompts, loading functions, etc.
 # ------------------------------
+
 
 PROMPT="%F{cyan}%n:%f%F{green}%d%f $
 "
