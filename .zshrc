@@ -18,6 +18,7 @@ alias dp="docker ps"
 alias di="docker images"
 alias dc="docker-compose"
 alias to_base="cd /Users/yuto_tachibana/Projects/pring/pring-ts-base"
+alias reload="exec $SHELL -l"
 
 # ------------------------------
 # PATHs
@@ -30,6 +31,7 @@ export PATH="$HOME/bin:$PATH"
 # ------------------------------
 # Initialize Enviroments
 # ------------------------------
+
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 
@@ -37,12 +39,13 @@ eval "$(pyenv init -)"
 # ------------------------------
 # Load Themes
 # ------------------------------
+
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 # ------------------------------
-# Voiding dangerous commands
+# Avoiding dangerous commands
 # ------------------------------
 
 WARNING_MESSAGE="\e[31m[Dangerous Command] Check the command."
