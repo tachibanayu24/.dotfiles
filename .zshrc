@@ -54,8 +54,7 @@ fi
 
 WARNING_MESSAGE="\e[31m[Dangerous Command] Check the command."
 
-# git push origin master
-function disable_dangerous_git_commands() {
+function check_dangerous_git_commands() {
   if [[ $2 = "git push origin master" ]]; then
       echo ${WARNING_MESSAGE}
       kill -INT 0
@@ -69,12 +68,6 @@ function disable_dangerous_git_commands() {
 }
 
 # ------------------------------
-# display time
-# ------------------------------
-
-RPROMPT='%F{magenta}%* %F{white}/ '
-
-# ------------------------------
 # display status of git
 # ------------------------------
 
@@ -84,17 +77,17 @@ function rprompt-git-current-branch {
   branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
   st=`git status 2> /dev/null`
   if [[ -n `echo "$st" | grep "^not a git"` ]]; then
-    branch_status="no git"
+    branch_status="   no git"
   elif [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    branch_status="%F{green}clean"
+    branch_status="    %F{green}clean"
   elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-    branch_status="%F{red}untrack"
+    branch_status="  %F{red}untrack"
   elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-    branch_status="%F{red}not stg"
+    branch_status="  %F{red}not stg"
   elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
     branch_status="%F{yellow}to commit"
   elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-    echo "%F{red}conflict"
+    echo " %F{red}conflict"
     return
   else
     branch_status="%F{blue}status?"
@@ -102,16 +95,43 @@ function rprompt-git-current-branch {
   echo "${branch_status}"
 }
 
-RPROMPT+='`rprompt-git-current-branch`'
-
+CUSTOM_RPROMPT='`rprompt-git-current-branch`'
 
 # ------------------------------
 # Defining prompts, loading functions, etc.
 # ------------------------------
 
 
-PROMPT="%F{cyan}%n:%f%F{green}%d%f $
+PROMPT="%F{cyan}%n:%f%F{green}%d%f @ %F{magenta}%* $
 "
 setopt prompt_subst
 autoload -Uz add-zsh-hook
-add-zsh-hook preexec disable_dangerous_git_commands
+add-zsh-hook preexec check_dangerous_git_commands
+
+
+# VCSの情報を取得するzshの便利関数 vcs_infoを使う
+autoload -Uz vcs_info
+
+# 表示フォーマットの指定
+# %b ブランチ情報
+# %a アクション名(mergeなど)
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+
+
+print_to_rprompt() {
+	col=$(( COLUMNS - 8 ))
+	print -Pn "\e7\e[1A\e[${col}G${CUSTOM_RPROMPT}\e8"
+}
+
+TMOUT=1
+TRAPALRM() {
+    print_to_rprompt
+}
