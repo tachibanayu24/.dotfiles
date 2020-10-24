@@ -108,23 +108,9 @@ setopt prompt_subst
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec check_dangerous_git_commands
 
-
-# VCSの情報を取得するzshの便利関数 vcs_infoを使う
-autoload -Uz vcs_info
-
-# 表示フォーマットの指定
-# %b ブランチ情報
-# %a アクション名(mergeなど)
-zstyle ':vcs_info:*' formats '[%b]'
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-
-# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
-
+# ------------------------------
+# Render Right Side Prompt
+# ------------------------------
 
 print_to_rprompt() {
 	col=$(( COLUMNS - 8 ))
@@ -133,5 +119,5 @@ print_to_rprompt() {
 
 TMOUT=1
 TRAPALRM() {
-    print_to_rprompt
+  print_to_rprompt
 }
