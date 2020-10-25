@@ -4,18 +4,17 @@
 
 alias vim="nvim"
 alias tree="tree -I node_modules -L 4"
-alias code="code ."
 alias ..='cd ..'
 alias ~="cd ~"
 alias mv='mv -i'
 alias cp='cp -i'
 alias c="clear"
-alias ga='git add'
-alias gc='git commit'
+# alias ga='git add'
+# alias gc='git commit'
 alias gpl='git pull'
 alias gps='git push'
 alias gs='git status'
-alias gch="git checkout"
+alias gc="git checkout"
 alias gb="git branch"
 alias gl="git log"
 alias dp="docker ps"
@@ -49,10 +48,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # ------------------------------
-# Avoiding dangerous commands
+# Avoiding commands
 # ------------------------------
 
-WARNING_MESSAGE="\e[31m[Dangerous Command] Check the command."
+WARNING_MESSAGE="\e[33m[Warn] If you want to run this command, escape it with a '\'."
 
 function check_dangerous_git_commands() {
   if [[ $2 = "git push origin master" ]]; then
@@ -62,6 +61,13 @@ function check_dangerous_git_commands() {
       echo ${WARNING_MESSAGE}
       kill -INT 0
   elif [[ $2 = "git push origin HEAD" ]]; then
+      echo ${WARNING_MESSAGE}
+      kill -INT 0
+  fi
+}
+
+function check_opening_vscode() {
+  if [[ $2 = "code /" ]]; then
       echo ${WARNING_MESSAGE}
       kill -INT 0
   fi
@@ -107,6 +113,7 @@ PROMPT="%F{cyan}%n:%f%F{green}%d%f @ %F{magenta}%*%f $
 setopt prompt_subst
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec check_dangerous_git_commands
+add-zsh-hook preexec check_opening_vscode
 
 # ------------------------------
 # Render Right Side Prompt
