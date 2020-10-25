@@ -102,7 +102,7 @@ CUSTOM_RPROMPT='`rprompt-git-current-branch`'
 # ------------------------------
 
 
-PROMPT="%F{cyan}%n:%f%F{green}%d%f @ %F{magenta}%* $
+PROMPT="%F{cyan}%n:%f%F{green}%d%f @ %F{magenta}%*%f $
 "
 setopt prompt_subst
 autoload -Uz add-zsh-hook
