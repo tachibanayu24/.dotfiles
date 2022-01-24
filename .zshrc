@@ -2,26 +2,25 @@
 # Aliases
 # ------------------------------
 
-alias vim="nvim"
-alias tree="tree -I node_modules -L 4"
+alias vim='nvim'
+alias tree='(){tree -I $1 -L $2}'
 alias ..='cd ..'
-alias ~="cd ~"
+alias ~='cd ~'
 alias mv='mv -i'
 alias cp='cp -i'
-alias c="clear"
-# alias ga='git add'
-# alias gc='git commit'
+alias c='clear'
 alias gpl='git pull'
 alias gps='git push'
 alias gs='git status'
-alias gc="git checkout"
-alias gb="git branch"
-alias gl="git log"
-alias dp="docker ps"
-alias di="docker images"
-alias dc="docker-compose"
-alias to_base="cd /Users/yuto_tachibana/Projects/pring/pring-ts-base"
-alias reload="exec $SHELL -l"
+alias gc='git checkout'
+alias gb='git branch'
+alias gl='git log'
+alias g-empty-commit='(){git commit --allow-empty -m $1}'
+alias dc="docker compose"
+alias workside='cd /Users/yuto/Workspace/workside'
+alias first-automation='cd /Users/yuto/Workspace/first-automation'
+alias tachibanayu24='cd /Users/yuto/Workspace/tachibanayu24'
+alias reload='exec $SHELL -l'
 
 # ------------------------------
 # PATHs
@@ -30,6 +29,7 @@ alias reload="exec $SHELL -l"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:./node_modules/.bin
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 
 # ------------------------------
 # Initialize Enviroments
@@ -128,3 +128,9 @@ TMOUT=1
 TRAPALRM() {
   print_to_rprompt
 }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yuto/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yuto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/completion.zsh.inc'; fi
