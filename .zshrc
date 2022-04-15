@@ -30,6 +30,10 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:./node_modules/.bin
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
+export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/bin/python3"
+
+
+
 
 # ------------------------------
 # Initialize Enviroments
@@ -37,7 +41,6 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
-
 
 # ------------------------------
 # Load Themes
@@ -67,7 +70,7 @@ function check_dangerous_git_commands() {
 }
 
 function check_opening_vscode() {
-  if [[ $2 = "code /" ]]; then
+  if [ $2 = "code /" ] || [ $2 = "code ," ] || [ "$2" = "code ,." ]; then
       echo ${WARNING_MESSAGE}
       kill -INT 0
   fi
@@ -129,8 +132,8 @@ TRAPALRM() {
   print_to_rprompt
 }
 
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/yuto/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/yuto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/completion.zsh.inc'; fi
