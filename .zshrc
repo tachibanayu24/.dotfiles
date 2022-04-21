@@ -70,7 +70,7 @@ function check_dangerous_git_commands() {
 }
 
 function check_opening_vscode() {
-  if [ $2 = "code /" ] || [ $2 = "code ," ] || [ "$2" = "code ,." ]; then
+  if [ $2 = "code /" ] || [ $2 = "code ," ] || [ "$2" = "code ,." ] || [ "$2" = "code .," ]; then
       echo ${WARNING_MESSAGE}
       kill -INT 0
   fi
