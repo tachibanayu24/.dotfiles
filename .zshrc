@@ -1,3 +1,9 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+# ------------------------------
+# Fig pre block
+# ------------------------------
+
 # ------------------------------
 # Aliases
 # ------------------------------
@@ -50,6 +56,18 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # ------------------------------
+# Prompt
+# @see https://spaceship-prompt.sh/options
+# ------------------------------
+
+SPACESHIP_PROMPT_ORDER=(dir git node gcloud exec_time line_sep jobs exit_code char)
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_CHAR_SYMBOL="> "
+SPACESHIP_GIT_PREFIX=""
+SPACESHIP_AWS_PREFIX=""
+SPACESHIP_GCLOUD_PREFIX=""
+
+# ------------------------------
 # Avoiding commands
 # ------------------------------
 
@@ -76,63 +94,19 @@ function check_opening_vscode() {
 }
 
 # ------------------------------
-# display status of git
-# ------------------------------
-
-function rprompt-git-current-branch {
-  local branch_name st branch_status
-
-  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-  st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^not a git"` ]]; then
-    branch_status="   no git"
-  elif [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    branch_status="    %F{green}clean"
-  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-    branch_status="  %F{red}untrack"
-  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-    branch_status="  %F{red}not stg"
-  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
-    branch_status="%F{yellow}to commit"
-  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-    echo " %F{red}conflict"
-    return
-  else
-    branch_status="%F{blue}status?"
-  fi
-  echo "${branch_status}"
-}
-
-CUSTOM_RPROMPT='`rprompt-git-current-branch`'
-
-# ------------------------------
 # Defining prompts, loading functions, etc.
 # ------------------------------
 
-
-PROMPT="%F{cyan}%n:%f%F{green}%d%f @ %F{magenta}%*%f $
-"
 setopt prompt_subst
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec check_dangerous_git_commands
 add-zsh-hook preexec check_opening_vscode
-
-# ------------------------------
-# Render Right Side Prompt
-# ------------------------------
-
-print_to_rprompt() {
-	col=$(( COLUMNS - 8 ))
-	print -Pn "\e7\e[1A\e[${col}G${CUSTOM_RPROMPT}\e8"
-}
-
-TMOUT=1
-TRAPALRM() {
-  print_to_rprompt
-}
 
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/yuto/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/yuto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
