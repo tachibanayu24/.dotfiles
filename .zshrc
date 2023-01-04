@@ -32,6 +32,7 @@ alias reload='exec $SHELL -l'
 # PATHs
 # ------------------------------
 
+export PATH="$PATH:/opt/homebrew/bin"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:./node_modules/.bin
 export PATH="$HOME/bin:$PATH"
