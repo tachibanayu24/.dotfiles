@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTPATH=~/.dotfiles
+DOTPATH="$HOME"/Workspace/tachibanayu24/.dotfiles
 
 for f in .??*
 do
