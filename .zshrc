@@ -2,8 +2,6 @@
 # Aliases
 # ------------------------------
 
-alias vim='nvim'
-alias tree='(){tree -I $1 -L $2}'
 alias ..='cd ..'
 alias ~='cd ~'
 alias la='ls -la'
@@ -18,6 +16,8 @@ alias gc='git checkout'
 alias gb='git branch'
 alias gl='git log'
 alias g-empty-commit='(){git commit --allow-empty -m $1}'
+alias vim='nvim'
+alias tree='(){tree -I $1 -L $2}'
 alias dc="docker compose"
 alias workside='cd /Users/yuto/Workspace/workside'
 alias first-automation='cd /Users/yuto/Workspace/first-automation'
@@ -57,6 +57,7 @@ fi
 # @see https://spaceship-prompt.sh/options
 # ------------------------------
 
+# NOTE: Warpとの相性が悪いようなので一旦コメントアウトしておく
 # source /opt/homebrew/opt/spaceship/spaceship.zsh
 # SPACESHIP_PROMPT_ORDER=(dir git node gcloud exec_time line_sep jobs exit_code char)
 # SPACESHIP_PACKAGE_SHOW=false
