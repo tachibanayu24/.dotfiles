@@ -1,9 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-# ------------------------------
-# Fig pre block
-# ------------------------------
-
 # ------------------------------
 # Aliases
 # ------------------------------
@@ -12,6 +6,8 @@ alias vim='nvim'
 alias tree='(){tree -I $1 -L $2}'
 alias ..='cd ..'
 alias ~='cd ~'
+alias la='ls -la'
+alias ll='ls -l'
 alias mv='mv -i'
 alias cp='cp -i'
 alias c='clear'
@@ -61,12 +57,13 @@ fi
 # @see https://spaceship-prompt.sh/options
 # ------------------------------
 
-SPACESHIP_PROMPT_ORDER=(dir git node gcloud exec_time line_sep jobs exit_code char)
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_CHAR_SYMBOL="> "
-SPACESHIP_GIT_PREFIX=""
-SPACESHIP_AWS_PREFIX=""
-SPACESHIP_GCLOUD_PREFIX=""
+# source /opt/homebrew/opt/spaceship/spaceship.zsh
+# SPACESHIP_PROMPT_ORDER=(dir git node gcloud exec_time line_sep jobs exit_code char)
+# SPACESHIP_PACKAGE_SHOW=false
+# SPACESHIP_CHAR_SYMBOL="> "
+# SPACESHIP_GIT_PREFIX=""
+# SPACESHIP_AWS_PREFIX=""
+# SPACESHIP_GCLOUD_PREFIX=""
 
 # ------------------------------
 # Avoiding commands
@@ -108,6 +105,3 @@ add-zsh-hook preexec check_opening_vscode
 if [ -f '/Users/yuto/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/yuto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
