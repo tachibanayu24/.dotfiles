@@ -34,7 +34,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:./node_modules/.bin
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
-export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/bin/python3"
+# export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/bin/python3"
+export CLOUDSDK_PYTHON=/usr/bin/python3
 export PATH="$PATH:/Users/yuto/flutter-sdk/flutter/bin"
 
 
