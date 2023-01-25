@@ -17,6 +17,7 @@ alias gb='git branch'
 alias gl='git log'
 alias g-empty-commit='(){git commit --allow-empty -m $1}'
 alias vim='nvim'
+alias cat='bat'
 alias tree='(){tree -I $1 -L $2}'
 alias dc="docker compose"
 alias workside='cd /Users/yuto/Workspace/workside'
