@@ -6,8 +6,9 @@ Personal dotfiles configuration for tachibanayu24
 
 - **Zsh** - Shell configuration with ZIM Framework
 - **Neovim** - Modern setup based on kickstart.nvim
-- **VSCode** - Editor settings and extensions
+- **VSCode** - Editor settings and 19+ extensions (Tokyo Night theme, Hack font)
 - **Git** - Config with useful aliases
+- **Karabiner-Elements** - Keyboard customization settings for Japanese input
 - **Brewfile** - Package management for Homebrew
 
 ## 🚀 Setup
@@ -43,4 +44,18 @@ Plugins will be automatically installed on first launch:
 nvim
 # Plugin installation will start automatically
 # After completion, run `:checkhealth` to verify the environment
+```
+
+## ⚠️ Important Notes
+
+### Karabiner-Elements Configuration
+
+After changing Karabiner-Elements settings, the symlink will be replaced with a real file. To sync your changes:
+
+```bash
+# 1. Copy updated config to dotfiles
+cp ~/.config/karabiner/karabiner.json ~/Workspace/tachibanayu24/.dotfiles/karabiner/karabiner.json
+
+# 2. Recreate symlink
+sh install.sh
 ```
