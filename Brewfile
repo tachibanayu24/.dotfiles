@@ -20,6 +20,9 @@ brew "gh"               # GitHub CLI
 # Useful Tools
 brew "jq"               # JSON processor
 
+# Fonts
+cask "font-hack"
+
 # GUI Applications
 cask "slack"
 cask "notion"
