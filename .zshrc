@@ -89,27 +89,6 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 #typeset -A ZSH_HIGHLIGHT_STYLES
 #ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
 
-# ------------------
-# Initialize modules
-# ------------------
-
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-# Download zimfw plugin manager if missing.
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  if (( ${+commands[curl]} )); then
-    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  else
-    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  fi
-fi
-# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init
-fi
-# Initialize modules.
-source ${ZIM_HOME}/init.zsh
 
 # ------------------------------
 # Post-init module configuration
@@ -176,27 +155,7 @@ export PATH="$PATH:/Users/yuto/flutter-sdk/flutter/bin"
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 
-# ------------------------------
-# Load Themes
-# ------------------------------
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# ------------------------------
-# Prompt
-# @see https://spaceship-prompt.sh/options
-# ------------------------------
-
-# NOTE: Warpとの相性が悪いようなので一旦コメントアウトしておく
-# source /opt/homebrew/opt/spaceship/spaceship.zsh
-# SPACESHIP_PROMPT_ORDER=(dir git node gcloud exec_time line_sep jobs exit_code char)
-# SPACESHIP_PACKAGE_SHOW=false
-# SPACESHIP_CHAR_SYMBOL="> "
-# SPACESHIP_GIT_PREFIX=""
-# SPACESHIP_AWS_PREFIX=""
-# SPACESHIP_GCLOUD_PREFIX=""
 
 # ------------------------------
 # Avoiding commands
