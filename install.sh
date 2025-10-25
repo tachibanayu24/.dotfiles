@@ -18,3 +18,10 @@ mkdir -p "$HOME/.config"
 for f in nvim; do
     ln -snfv "$DOTPATH/$f" "$HOME/.config/$f"
 done
+
+echo ""
+echo "✅ Dotfiles installation completed!"
+echo ""
+echo "📝 Next steps:"
+echo "  1. Run: brew bundle --file=$DOTPATH/Brewfile"
+echo "  2. Reload shell: source ~/.zshrc"

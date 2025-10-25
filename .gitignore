@@ -1,1 +1,18 @@
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Neovim
+nvim/.lazy-lock.json
+nvim/.luarc.json
+nvim/lazy-lock.json
+
+# 一時ファイル
+*.swp
+*.swo
+*~
+.*.swp
+
+# ローカル設定ファイル
+.local
