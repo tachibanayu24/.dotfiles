@@ -1,0 +1,39 @@
+# AI & Productivity
+anthropic.claude-code
+github.copilot
+github.copilot-chat
+openai.chatgpt
+
+# Code Quality & Formatting
+esbenp.prettier-vscode
+dbaeumer.vscode-eslint
+streetsidesoftware.code-spell-checker
+
+# Framework & Language Support
+bradlc.vscode-tailwindcss
+unifiedjs.vscode-mdx
+
+# GitHub Integration
+github.vscode-pull-request-github
+github.vscode-github-actions
+
+# UI & Icons
+vscode-icons-team.vscode-icons
+
+# HTML/JSX Helpers
+formulahendry.auto-rename-tag
+
+# Visualization & Utilities
+naumovs.color-highlight
+oderwat.indent-rainbow
+wayou.vscode-todo-highlight
+mechatroner.rainbow-csv
+
+# Developer Tools
+rangav.vscode-thunder-client
+jeff-hykin.polacode-2019
+
+# Optional (Project-specific - コメントアウト)
+# ajmnz.prisma-import
+# ms-vscode-remote.remote-containers
+# hashicorp.terraform

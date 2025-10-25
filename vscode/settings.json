@@ -1,0 +1,221 @@
+{
+  /**
+   * Security & Trust
+   */
+  "security.workspace.trust.untrustedFiles": "open",
+  "security.promptForLocalFileProtocolHandling": false,
+
+  /**
+   * Editor - Basic
+   */
+  "editor.fontFamily": "Monaco, Menlo, 'Courier New', monospace",
+  "editor.fontSize": 11.5,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.renderWhitespace": "all",
+  "editor.renderControlCharacters": true,
+  "editor.guides.indentation": true,
+  "editor.trimAutoWhitespace": false,
+
+  /**
+   * Editor - Formatting
+   */
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.tslint": "explicit",
+    "source.fixAll": "explicit"
+  },
+
+  /**
+   * Editor - Display
+   */
+  "editor.renderLineHighlight": "all",
+  "editor.minimap.enabled": true,
+  "editor.minimap.maxColumn": 40,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.side": "right",
+  "editor.scrollBeyondLastLine": true,
+  "editor.roundedSelection": true,
+
+  /**
+   * Editor - Cursor
+   */
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorWidth": 5,
+
+  /**
+   * Editor - Suggestions
+   */
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.quickSuggestions": {
+    "comments": false,
+    "strings": true,
+    "other": true
+  },
+
+  /**
+   * Editor - Other
+   */
+  "editor.autoIndent": "none",
+  "editor.links": true,
+  "editor.matchBrackets": "always",
+  "editor.mouseWheelScrollSensitivity": 0.7,
+  "editor.mouseWheelZoom": false,
+  "editor.accessibilitySupport": "off",
+
+  /**
+   * Language - HTML
+   */
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+
+  /**
+   * Language - JavaScript
+   */
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  /**
+   * Language - TypeScript
+   */
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.referencesCodeLens.enabled": true,
+
+  /**
+   * Language - Markdown
+   */
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+
+  /**
+   * Files
+   */
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "files.autoGuessEncoding": true,
+  "files.associations": {
+    "*.erb": "erb"
+  },
+
+  /**
+   * Workbench - UI
+   */
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#111111",
+    "statusBar.noFolderBackground": "#111111",
+    "statusBar.debuggingBackground": "#111111"
+  },
+
+  /**
+   * Window
+   */
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+
+  /**
+   * Explorer
+   */
+  "explorer.confirmDragAndDrop": false,
+
+  /**
+   * Search
+   */
+  "search.exclude": {
+    "dist": true
+  },
+
+  /**
+   * Diff Editor
+   */
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  /**
+   * Git
+   */
+  "git.autofetch": true,
+
+  /**
+   * GitHub
+   */
+  "githubPullRequests.fileListLayout": "tree",
+  "githubPullRequests.pullBranch": "never",
+
+  /**
+   * GitHub Copilot
+   */
+  "github.copilot.editor.enableAutoCompletions": true,
+
+  /**
+   * Extensions
+   */
+  "extensions.autoUpdate": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "redhat.telemetry.enabled": true,
+  "prisma.showPrismaDataPlatformNotification": false,
+
+  /**
+   * Emmet
+   */
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
+
+  /**
+   * ESLint
+   */
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  /**
+   * Accessibility
+   */
+  "accessibility.signals.lineHasError": {
+    "sound": "off"
+  },
+
+  /**
+   * Spell Checker
+   */
+  "cSpell.userWords": [
+    "esbenp",
+    "eyecatch",
+    "firestore",
+    "microcms",
+    "preboarding",
+    "previewable",
+    "rubocop",
+    "sendgrid",
+    "Tachibana",
+    "tachibanayu",
+    "tailwindcss",
+    "unoptimized",
+    "Yuto"
+  ]
+}
