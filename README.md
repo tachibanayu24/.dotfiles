@@ -2,6 +2,14 @@
 
 Personal dotfiles configuration for tachibanayu24
 
+## 📦 What's Included
+
+- **Zsh** - Shell configuration with ZIM Framework
+- **Neovim** - Modern setup based on kickstart.nvim
+- **VSCode** - Editor settings and extensions
+- **Git** - Config with useful aliases
+- **Brewfile** - Package management for Homebrew
+
 ## 🚀 Setup
 
 ### 1. Install Homebrew
@@ -26,12 +34,6 @@ brew bundle --file=./Brewfile
 ```bash
 sh install.sh
 ```
-
-This will automatically create symbolic links:
-- `.zshrc` → `~/.zshrc`
-- `.zimrc` → `~/.zimrc`
-- `.gitconfig` → `~/.gitconfig`
-- `nvim/` → `~/.config/nvim/`
 
 ### 4. Neovim Initial Setup
 
