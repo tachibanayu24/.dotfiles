@@ -1,10 +1,6 @@
 # Brewfile
 # 使い方: brew bundle --file=~/Workspace/tachibanayu24/.dotfiles/Brewfile
 
-# Taps
-tap "homebrew/bundle"
-tap "homebrew/cask"
-
 # CLI Tools
 brew "git"
 brew "neovim"
@@ -23,3 +19,18 @@ brew "gh"               # GitHub CLI
 
 # Useful Tools
 brew "jq"               # JSON processor
+
+# GUI Applications
+cask "slack"
+cask "notion"
+cask "visual-studio-code"
+cask "google-chrome"
+cask "warp"
+cask "chatgpt"
+cask "claude"
+cask "raycast"
+cask "karabiner-elements"
+cask "the-unarchiver"
+cask "itsycal"
+cask "zoom"
+cask "giphy-capture"
