@@ -72,27 +72,24 @@ alias reload='exec $SHELL -l'
 # ------------------------------
 
 export PATH="$PATH:/opt/homebrew/bin"
-export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:./node_modules/.bin
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.pyenv/bin:$PATH"
 export CLOUDSDK_PYTHON=/usr/bin/python3
 export PATH="$PATH:/Users/yuto/flutter-sdk/flutter/bin"
-
-# ------------------------------
-# 言語環境初期化
-# ------------------------------
-
-# eval "$(rbenv init -)"
-# eval "$(pyenv init -)"
+export PATH=~/.npm-global/bin:$PATH
 
 # ------------------------------
 # 外部ツール設定
 # ------------------------------
 
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
 # Google Cloud SDK
-if [ -f '/Users/yuto/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/yuto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # ------------------------------
 # カスタム関数とフック
@@ -120,6 +117,30 @@ function check_dangerous_git_commands() {
   fi
 }
 
+# 危険なrmコマンドを防止
+function check_dangerous_rm_commands() {
+  # ホームディレクトリやルートディレクトリの削除を防ぐ
+  if [[ $2 =~ "rm -rf /" ]] || [[ $2 =~ "rm -fr /" ]] || [[ $2 =~ "rm -f -r /" ]] || [[ $2 =~ "rm -r -f /" ]]; then
+      echo ${WARNING_MESSAGE}
+      kill -INT 0
+  elif [[ $2 =~ "rm -rf ~" ]] || [[ $2 =~ "rm -fr ~" ]] || [[ $2 =~ "rm -f -r ~" ]] || [[ $2 =~ "rm -r -f ~" ]]; then
+      echo ${WARNING_MESSAGE}
+      kill -INT 0
+  elif [[ $2 =~ "rm -rf /*" ]] || [[ $2 =~ "rm -fr /*" ]] || [[ $2 =~ "rm -f -r /*" ]] || [[ $2 =~ "rm -r -f /*" ]]; then
+      echo ${WARNING_MESSAGE}
+      kill -INT 0
+  elif [[ $2 =~ "rm -rf \$HOME" ]] || [[ $2 =~ "rm -fr \$HOME" ]] || [[ $2 =~ "rm -f -r \$HOME" ]] || [[ $2 =~ "rm -r -f \$HOME" ]]; then
+      echo ${WARNING_MESSAGE}
+      kill -INT 0
+  elif [[ $2 =~ "rm -rf ." ]] && [[ $PWD = "/" ]]; then
+      echo ${WARNING_MESSAGE}
+      kill -INT 0
+  elif [[ $2 = "rm -rf *" ]] && [[ $PWD = "/" ]]; then
+      echo ${WARNING_MESSAGE}
+      kill -INT 0
+  fi
+}
+
 # 誤ったVSCode起動を防止
 function check_opening_vscode() {
   if [ $2 = "code /" ] || [ $2 = "code ," ] || [ "$2" = "code ,." ] || [ "$2" = "code .," ]; then
@@ -131,4 +152,5 @@ function check_opening_vscode() {
 setopt prompt_subst
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec check_dangerous_git_commands
+add-zsh-hook preexec check_dangerous_rm_commands
 add-zsh-hook preexec check_opening_vscode

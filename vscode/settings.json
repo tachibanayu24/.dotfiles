@@ -123,6 +123,7 @@
    */
   "workbench.startupEditor": "newUntitledFile",
   "workbench.editor.enablePreview": false,
+  "workbench.colorTheme": "Tokyo Night",
   "workbench.iconTheme": "vscode-icons",
   "workbench.colorCustomizations": {
     "statusBar.background": "#111111",

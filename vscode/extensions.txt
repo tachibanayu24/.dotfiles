@@ -17,7 +17,8 @@ unifiedjs.vscode-mdx
 github.vscode-pull-request-github
 github.vscode-github-actions
 
-# UI & Icons
+# UI & Themes
+enkia.tokyo-night
 vscode-icons-team.vscode-icons
 
 # HTML/JSX Helpers
