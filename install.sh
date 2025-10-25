@@ -19,6 +19,10 @@ for f in nvim; do
     ln -snfv "$DOTPATH/$f" "$HOME/.config/$f"
 done
 
+# Karabiner-Elements設定のシンボリックリンク作成
+mkdir -p "$HOME/.config/karabiner"
+ln -snfv "$DOTPATH/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
+
 # VSCode設定のシンボリックリンク作成
 VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
 if [ -d "$VSCODE_USER_DIR" ]; then
