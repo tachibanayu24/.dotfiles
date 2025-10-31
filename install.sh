@@ -37,6 +37,7 @@ do
     [[ "$f" = ".git" ]] && continue
     [[ "$f" = ".gitmodules" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
+    [[ "$f" == ".claude" ]] && continue
     [[ "$f" == "_old" ]] && continue
 
     if confirm_overwrite "$f"; then
