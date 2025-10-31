@@ -38,6 +38,24 @@ source ${ZIM_HOME}/init.zsh
 # カスタムプロンプトテーマの読み込み
 source ${ZDOTDIR:-$HOME}/.tachibanayu24.zsh-theme
 
+# 補完設定
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+if (( $+commands[fzf] )); then
+  # Recommended fzf-tab configuration (per https://github.com/Aloxaf/fzf-tab)
+  zstyle ':completion:*:git-checkout:*' sort false
+  zstyle ':completion:*:descriptions' format '[%d]'
+  [[ -n ${LS_COLORS-} ]] && zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  zstyle ':completion:*' menu no
+  zstyle ':fzf-tab:*' use-fzf-default-opts yes
+  zstyle ':fzf-tab:*' switch-group '<' '>'
+  zstyle ':fzf-tab:*' fzf-flags --bind=tab:accept
+  (( $+functions[enable-fzf-tab] )) && enable-fzf-tab
+  if (( $+commands[eza] )); then
+    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+  else
+    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 $realpath'
+  fi
+fi
 # zsh-autosuggestions
 # 最後のモジュールの場合、自動ウィジェット再バインドを無効化
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1

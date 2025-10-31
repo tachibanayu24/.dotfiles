@@ -9,6 +9,12 @@ zmodule utility        # 便利なエイリアスと関数
 zmodule prompt-pwd     # プロンプト用のディレクトリパス短縮表示（~/W/t/p形式）
 zmodule git-info       # Git情報の取得（ブランチ名、変更状態など）
 
+# fzf (バイナリとキーバインド／補完)
+zmodule junegunn/fzf --on-pull './install --completion --key-bindings --no-update-rc'
+zmodule junegunn/fzf --cmd 'path+={}/bin'
+zmodule junegunn/fzf --source 'shell/key-bindings.zsh'
+zmodule junegunn/fzf --source 'shell/completion.zsh'
+
 # 補完機能
 zmodule zsh-users/zsh-completions --fpath src  # 追加の補完定義
 zmodule completion                              # Zsh標準の補完機能
