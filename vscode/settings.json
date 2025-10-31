@@ -8,7 +8,7 @@
   /**
    * Editor - Basic
    */
-  "editor.fontFamily": "Hack, Monaco, Menlo, 'Courier New', monospace",
+  "editor.fontFamily": "'Hack Nerd Font', Hack, Monaco, Menlo, 'Courier New', monospace",
   "editor.fontSize": 11.5,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,

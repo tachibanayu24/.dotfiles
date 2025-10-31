@@ -2,8 +2,16 @@
 # Zsh基本設定
 # ------------------------------
 
-# Historyの重複を削除
+# History設定
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_ALL_DUPS
+
+# ディレクトリ移動
+setopt AUTO_CD              # cdなしでディレクトリ移動
+setopt AUTO_PUSHD           # cd履歴をスタックに保存
+setopt PUSHD_IGNORE_DUPS    # 重複したディレクトリをスタックに追加しない
 
 # Emacsキーバインド
 bindkey -e
@@ -26,6 +34,9 @@ source ${ZIM_HOME}/init.zsh
 # ------------------------------
 # ZIM モジュール設定
 # ------------------------------
+
+# カスタムプロンプトテーマの読み込み
+source ${ZDOTDIR:-$HOME}/.tachibanayu24.zsh-theme
 
 # zsh-autosuggestions
 # 最後のモジュールの場合、自動ウィジェット再バインドを無効化
@@ -59,13 +70,17 @@ alias la='ls -la'
 alias ll='ls -l'
 alias mv='mv -i'
 alias cp='cp -i'
+alias mkdir='mkdir -p'
 alias c='clear'
 alias g='git'
 alias vim='nvim'
 alias cat='bat'
-alias tree='(){tree -I $1 -L $2}'
+alias grep='grep --color=auto'
 alias dc="docker compose"
 alias reload='exec $SHELL -l'
+
+# tree関数（除外パターンと深さを指定）
+tree() { command tree -I "$1" -L "$2"; }
 
 # ------------------------------
 # PATH設定
@@ -75,7 +90,7 @@ export PATH="$PATH:/opt/homebrew/bin"
 export PATH=$PATH:./node_modules/.bin
 export PATH="$HOME/bin:$PATH"
 export CLOUDSDK_PYTHON=/usr/bin/python3
-export PATH="$PATH:/Users/yuto/flutter-sdk/flutter/bin"
+export PATH="$PATH:$HOME/flutter-sdk/flutter/bin"
 export PATH=~/.npm-global/bin:$PATH
 
 # ------------------------------

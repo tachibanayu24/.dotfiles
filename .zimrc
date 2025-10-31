@@ -1,10 +1,20 @@
-zmodule environment
-zmodule input
-zmodule utility
+# ZIM Framework モジュール設定
 
-zmodule duration-info
-zmodule git-info
-zmodule asciiship
+# 基本モジュール
+zmodule environment    # 環境変数の設定（PAGER、LESSなど）
+zmodule input          # キーバインディングの設定
+zmodule utility        # 便利なエイリアスと関数
 
-zmodule zsh-users/zsh-syntax-highlighting
-zmodule zsh-users/zsh-autosuggestions
+# プロンプト関連
+zmodule prompt-pwd     # プロンプト用のディレクトリパス短縮表示（~/W/t/p形式）
+zmodule git-info       # Git情報の取得（ブランチ名、変更状態など）
+
+# 補完機能
+zmodule zsh-users/zsh-completions --fpath src  # 追加の補完定義
+zmodule completion                              # Zsh標準の補完機能
+zmodule aloxaf/fzf-tab                         # ファジー検索による対話的な補完
+
+# シェル体験向上
+zmodule zsh-users/zsh-syntax-highlighting       # コマンドのシンタックスハイライト
+zmodule zsh-users/zsh-autosuggestions           # コマンド履歴からの自動提案（グレー表示）
+zmodule zsh-users/zsh-history-substring-search  # 矢印キーで履歴をインクリメンタル検索

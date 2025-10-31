@@ -21,7 +21,7 @@ brew "gh"               # GitHub CLI
 brew "jq"               # JSON processor
 
 # Fonts
-cask "font-hack"
+cask "font-hack-nerd-font"
 
 # GUI Applications
 cask "slack"
