@@ -157,6 +157,7 @@
    * Git
    */
   "git.autofetch": true,
+  "git.detectWorktrees": true,
 
   /**
    * GitHub
@@ -218,5 +219,11 @@
     "tailwindcss",
     "unoptimized",
     "Yuto"
+  ],
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "E9981DF6-A7D8-4246-B415-1EB18929DB71"
+    }
   ]
 }
