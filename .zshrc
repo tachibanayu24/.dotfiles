@@ -96,6 +96,7 @@ alias cat='bat'
 alias grep='grep --color=auto'
 alias dc="docker compose"
 alias reload='exec $SHELL -l'
+alias python='python3'
 
 # tree関数（除外パターンと深さを指定）
 tree() { command tree -I "$1" -L "$2"; }
@@ -110,6 +111,8 @@ export PATH="$HOME/bin:$PATH"
 export CLOUDSDK_PYTHON=/usr/bin/python3
 export PATH="$PATH:$HOME/flutter-sdk/flutter/bin"
 export PATH=~/.npm-global/bin:$PATH
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
 
 # ------------------------------
 # 外部ツール設定
@@ -187,3 +190,12 @@ autoload -Uz add-zsh-hook
 add-zsh-hook preexec check_dangerous_git_commands
 add-zsh-hook preexec check_dangerous_rm_commands
 add-zsh-hook preexec check_opening_vscode
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yuto/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yuto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuto/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Added by Antigravity
+export PATH="/Users/yuto/.antigravity/antigravity/bin:$PATH"

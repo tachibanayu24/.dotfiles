@@ -49,7 +49,7 @@ done
 echo ""
 echo "=== Setting up .config files ==="
 mkdir -p "$HOME/.config"
-for f in nvim; do
+for f in nvim ghostty; do
     target="$HOME/.config/$f"
     if [ -e "$target" ] || [ -L "$target" ]; then
         if [ -L "$target" ] && [ "$(readlink "$target")" = "$DOTPATH/$f" ]; then
