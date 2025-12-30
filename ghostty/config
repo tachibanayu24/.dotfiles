@@ -63,9 +63,9 @@ macos-titlebar-style = tabs
 # ------------------------------
 # Quick Terminal (Warp代替機能)
 # ------------------------------
-keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
 quick-terminal-position = top
-quick-terminal-animation-duration = 0.1
+quick-terminal-animation-duration = 0.2
 
 # ------------------------------
 # キーバインド
@@ -83,6 +83,17 @@ keybind = cmd+alt+down=goto_split:bottom
 # リンク
 # ------------------------------
 link-url = true
+
+# ------------------------------
+# シェル統合
+# ------------------------------
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# ------------------------------
+# 通知
+# ------------------------------
+desktop-notifications = true
 
 # ------------------------------
 # その他
