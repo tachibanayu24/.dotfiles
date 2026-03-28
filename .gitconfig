@@ -6,6 +6,7 @@
 	editor = nvim
 	autocrlf = input
 	quotepath = false
+	ignorecase = false
 
 [init]
 	defaultBranch = main

@@ -16,3 +16,6 @@ nvim/lazy-lock.json
 
 # ローカル設定ファイル
 .local
+
+# tmp
+.tmp/
