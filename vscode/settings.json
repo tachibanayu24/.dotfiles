@@ -27,7 +27,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll.tslint": "explicit",
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
   },
 
   /**
@@ -57,7 +57,7 @@
   "editor.quickSuggestions": {
     "comments": false,
     "strings": true,
-    "other": true
+    "other": true,
   },
 
   /**
@@ -74,14 +74,14 @@
    * Language - HTML
    */
   "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
+    "editor.defaultFormatter": "vscode.html-language-features",
   },
 
   /**
    * Language - JavaScript
    */
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
 
@@ -89,10 +89,10 @@
    * Language - TypeScript
    */
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.referencesCodeLens.enabled": true,
@@ -104,7 +104,7 @@
     "files.trimTrailingWhitespace": false,
     "editor.formatOnType": true,
     "editor.formatOnPaste": true,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
 
   /**
@@ -115,7 +115,7 @@
   "files.insertFinalNewline": true,
   "files.autoGuessEncoding": true,
   "files.associations": {
-    "*.erb": "erb"
+    "*.erb": "erb",
   },
 
   /**
@@ -128,7 +128,7 @@
   "workbench.colorCustomizations": {
     "statusBar.background": "#111111",
     "statusBar.noFolderBackground": "#111111",
-    "statusBar.debuggingBackground": "#111111"
+    "statusBar.debuggingBackground": "#111111",
   },
 
   /**
@@ -145,7 +145,7 @@
    * Search
    */
   "search.exclude": {
-    "dist": true
+    "dist": true,
   },
 
   /**
@@ -182,7 +182,7 @@
    * Emmet
    */
   "emmet.includeLanguages": {
-    "erb": "html"
+    "erb": "html",
   },
 
   /**
@@ -192,14 +192,14 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
   ],
 
   /**
    * Accessibility
    */
   "accessibility.signals.lineHasError": {
-    "sound": "off"
+    "sound": "off",
   },
 
   /**
@@ -218,12 +218,26 @@
     "tachibanayu",
     "tailwindcss",
     "unoptimized",
-    "Yuto"
+    "Yuto",
   ],
   "mssql.connectionGroups": [
     {
       "name": "ROOT",
-      "id": "E9981DF6-A7D8-4246-B415-1EB18929DB71"
-    }
-  ]
+      "id": "ROOT",
+    },
+  ],
+  "claudeCode.preferredLocation": "panel",
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://biomejs.dev": true,
+  },
+  "claudeCode.useTerminal": true,
+  "markdown-preview-enhanced.previewTheme": "github-light.css",
+  "markdown-preview-enhanced.enablePreviewZenMode": true,
 }

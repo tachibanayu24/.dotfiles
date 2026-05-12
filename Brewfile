@@ -5,7 +5,7 @@
 brew "git"
 brew "neovim"
 brew "bat"              # cat の代替
-brew "tree"             # ディレクトリ構造の表示
+brew "eza"              # ls / tree の代替 (--git で git status マーカー付き)
 # brew "rbenv"            # Ruby バージョン管理
 # brew "pyenv"            # Python バージョン管理
 brew "zimfw"            # Zsh フレームワーク
