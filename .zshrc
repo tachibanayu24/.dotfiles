@@ -84,8 +84,13 @@ unset key
 
 alias ..='cd ..'
 alias ~='cd ~'
-alias la='ls -la'
-alias ll='ls -l'
+alias ls='eza --icons --git'
+alias ll='eza -l --icons --git'
+alias la='eza -la --icons --git'
+alias lt='eza -T -L 2 --icons --git'    # ツリー、深さ 2
+alias lta='eza -Ta -L 2 --icons --git'  # ツリー + hidden、深さ 2
+alias ltt='eza -T -L 3 --icons --git'   # ツリー、深さ 3
+alias ltta='eza -Ta -L 3 --icons --git' # ツリー + hidden、深さ 3
 alias mv='mv -i'
 alias cp='cp -i'
 alias mkdir='mkdir -p'
@@ -97,9 +102,25 @@ alias grep='grep --color=auto'
 alias dc="docker compose"
 alias reload='exec $SHELL -l'
 alias python='python3'
+alias claude-rc='claude --dangerously-load-development-channels server:cc-remote'
+alias claude-yolo='claude --dangerously-skip-permissions'
+alias claude-rc-yolo='claude-rc --dangerously-skip-permissions'
+alias claude-yolo-rc='claude-rc --dangerously-skip-permissions'
+alias ports='lsof -iTCP -sTCP:LISTEN -n -P'  # listen 中のポートと PID を一覧
 
-# tree関数（除外パターンと深さを指定）
-tree() { command tree -I "$1" -L "$2"; }
+
+# tree関数（除外パターンと深さを指定）。eza バックエンド。
+# 使い方: tree                    → depth 2、フィルタなし
+#         tree node_modules       → depth 2、node_modules を除外
+#         tree node_modules 3     → depth 3、node_modules を除外
+tree() {
+  local depth="${2:-2}"
+  if [[ -n "$1" ]]; then
+    eza -T -L "$depth" -I "$1" --icons --git
+  else
+    eza -T -L "$depth" --icons --git
+  fi
+}
 
 # ------------------------------
 # PATH設定
@@ -108,11 +129,12 @@ tree() { command tree -I "$1" -L "$2"; }
 export PATH="$PATH:/opt/homebrew/bin"
 export PATH=$PATH:./node_modules/.bin
 export PATH="$HOME/bin:$PATH"
-export CLOUDSDK_PYTHON=/usr/bin/python3
+export CLOUDSDK_PYTHON=/usr/local/bin/python3
 export PATH="$PATH:$HOME/flutter-sdk/flutter/bin"
 export PATH=~/.npm-global/bin:$PATH
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # ------------------------------
 # 外部ツール設定
